@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO2 Data</title>
+    <style>
+        /* Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9fafb;
+            color: #333;
+        }
+
+        /* Header Styling */
+        h1 {
+            text-align: center;
+            color: #007bff;
+            font-size: 2.5rem;
+            margin-top: 20px;
+        }
+
+        /* Table Styling */
+        table {
+            width: 70%;
+            margin: 30px auto;
+            border-collapse: collapse;
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: center;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        td {
+            background-color: #fefefe;
+        }
+
+        tr:nth-child(even) td {
+            background-color: #f9f9f9;
+        }
+
+        /* Hover Effect */
+        tr:hover td {
+            background-color: #f1f1f1;
+            color: #007bff;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            table {
+                width: 90%;
+            }
+
+            th, td {
+                font-size: 0.9rem;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>CO2 Data</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>CO2 readings</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                <td>{{ row[0] }}</td>
+                <td>{{ row[1] if row|length > 1 else '' }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
